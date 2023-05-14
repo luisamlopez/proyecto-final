@@ -1,0 +1,39 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid var(--very-dark-cyan);
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: 10px;
+}
+
+.table th {
+  background-color: var(--very-dark-cyan);
+  color: var(--white);
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.table tbody {
+  background-color: var(--cream);
+  color: var(--very-dark-cyan);
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: var(--dark-grayish-blue);
+  color: var(--cream);
+}
+
+.idItem {
+  text-align: center;
+  font-weight: 700;
+}
