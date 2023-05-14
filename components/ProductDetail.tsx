@@ -27,7 +27,7 @@ export default function ProductDetail(props: ProductDetailProps) {
         }}
       >
         X
-      </button>{" "}
+      </button>
       <div className={style.card}>
         <div className={style.card__content}>
           <div className={style.card__category}>
@@ -41,8 +41,9 @@ export default function ProductDetail(props: ProductDetailProps) {
 
           <button className={style.card__button}>Comprar</button>
         </div>
+        <div></div>
+        <img src={props.data.image} alt={props.data.title} />
       </div>
-      <img src={props.data.image} alt={props.data.title} />
     </div>
   );
 }

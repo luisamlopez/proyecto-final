@@ -3,8 +3,6 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import Layout from "../components/Layout";
 import "../styles/Layout.module.css";
-import { Component, useEffect, useState } from "react";
-// import api from "../utils/api";
 import axios from "axios";
 import ProductsGrid from "../components/ProductsGrid";
 import styles from "../styles/ProductsGrid.module.css";
