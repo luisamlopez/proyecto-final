@@ -28,8 +28,8 @@ export default function Layout({ children, title }: any) {
 
         <div className={styles.menu}>
           <Link href="/">Home</Link>
-          <Link href="/products">Productos</Link>
-          <Link href="/pokemon">Pokemon API</Link>
+          <Link href="/Products">Productos</Link>
+          <Link href="/Pokemon">Pokemon API</Link>
         </div>
       </header>
       <main className={styles.main}> {children}</main>
