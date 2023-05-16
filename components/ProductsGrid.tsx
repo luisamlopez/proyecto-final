@@ -1,16 +1,10 @@
 import { useState } from "react";
 import styles from "../styles/ProductsGrid.module.css";
 import ProductDetail from "./ProductDetail";
+import { Product } from "../api/Product";
 
 export interface ProductsGridProps {
-  data: {
-    id: number;
-    image: string;
-    title: string;
-    price: number;
-    category: string;
-    description: string;
-  };
+  data: Product;
 }
 export default function ProductsGrid(props: ProductsGridProps) {
   const [showModal, setShowModal] = useState(false);
