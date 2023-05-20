@@ -1,20 +1,13 @@
-import { Inter } from "next/font/google";
 import Layout from "../components/Layout";
 import "../styles/Layout.module.css";
-// import api from "../utils/api";
 import axios from "axios";
-import Table from "../components/Table";
+import Post from "../components/Post";
 import { useEffect, useState } from "react";
-import { Post } from "../api/Post";
-
-const inter = Inter({ subsets: ["latin"] });
-
-//let posts: Post[] = [];
+import { Post as PostObject } from "../api/Post";
 
 export default function App() {
-  const [posts, setPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<PostObject[]>([]);
 
-  //setPosts([]);
   useEffect(() => {
     getPosts();
   }, []);
@@ -26,7 +19,6 @@ export default function App() {
     data = await axios.get(
       "https://jsonplaceholder.typicode.com/posts?_limit=10"
     );
-    // setData(data.data);
 
     setPosts(data.data);
     return {
@@ -52,7 +44,6 @@ export default function App() {
       }
 
       const data = response.data;
-      //posts.push({title: title, body: body});
       setPosts((posts) => [...posts, data]);
       alert("Post creado");
 
@@ -90,7 +81,6 @@ export default function App() {
         return post;
       });
       setPosts(updatePost);
-      //setPosts((posts) => [...posts, data]);
       alert("Post editado");
     } catch (error) {
       alert(error);
@@ -111,7 +101,6 @@ export default function App() {
       const data = response.data;
       const updatePost = posts.filter((post) => post.id !== id);
       setPosts(updatePost);
-      //setPosts((posts) => [...posts, data]);
       alert("Post eliminado");
     } catch (error) {
       alert(error);
@@ -132,6 +121,7 @@ export default function App() {
     });
   }
 
+  //Funcion para guardar el post
   function guardar() {
     const title = document.querySelector("input")!;
     const body = document.querySelector("textarea")!;
@@ -147,13 +137,16 @@ export default function App() {
     }
   }
 
+  //Funcion para manejar el evento submit del formulario y prevenir que se recargue la pagina
   function handleOnSubmit(e: any) {
     e.preventDefault();
   }
 
   return (
     <Layout title="Inicio ">
-      <h1>JSONPlaceholder API</h1>
+      <a href="https://jsonplaceholder.typicode.com/guide">
+        <h1>JSONPlaceholder API</h1>
+      </a>
 
       <button className="button" id="btnCreate" onClick={showForm}>
         Crear post
@@ -168,7 +161,7 @@ export default function App() {
         <button className="buttonCancelar">Cancelar</button>
       </form>
 
-      {/* Table of posts */}
+      {/* Header de la "tabla" de posts */}
       <div className="table">
         <div className="tableHeader">
           <div className="tableCell">ID</div>
@@ -177,8 +170,9 @@ export default function App() {
           <div className="tableCell">Acciones</div>
         </div>
       </div>
+
       {posts.map((post, i) => (
-        <Table
+        <Post
           key={post.id}
           data={post}
           onEdit={editPost}
