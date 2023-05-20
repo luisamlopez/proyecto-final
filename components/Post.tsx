@@ -1,20 +1,15 @@
 import { useState } from "react";
 import { Post } from "../api/Post";
-import styles from "../styles/Table.module.css";
+import styles from "../styles/Post.module.css";
 
-export interface TableProps {
+export interface PostProps {
   data: Post;
   isEditing?: boolean;
   onEdit: (id: number, title: string, body: string) => void;
   onDelete: (id: number) => void;
 }
 
-export default function Table({
-  data,
-  isEditing,
-  onEdit,
-  onDelete,
-}: TableProps) {
+export default function Post({ data, isEditing, onEdit, onDelete }: PostProps) {
   const [isEdit, setIsEdit] = useState(false);
 
   const handleEdit = () => {
