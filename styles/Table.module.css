@@ -37,3 +37,30 @@
   text-align: center;
   font-weight: 700;
 }
+
+.btnEdit {
+  background-color: var(--very-dark-cyan);
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.btnEdit:hover {
+  background-color: darkgreen;
+}
+
+.btnDelete {
+  border: 1px solid var(--very-dark-cyan);
+  color: var(--very-dark-cyan);
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.btnDelete:hover {
+  background-color: red;
+  color: var(--white);
+}

@@ -15,18 +15,10 @@ let products: Product[] = [];
 
 export default function Products(props: any) {
   products = props.products;
-  // useEffect(() => {
-  //   getProducts();
-  // }, []);
-  // if (typeof window !== "undefined") {
-  //   products =
-  //     localStorage.getItem("products") !== null
-  //       ? JSON.parse(localStorage.getItem("products") || "[]")
-  //       : products;
-  // }
 
   if (typeof window !== "undefined") {
-    console.log(JSON.parse(localStorage.getItem("products") || "[]"));
+    localStorage.setItem("products", JSON.stringify(products));
+    console.log(JSON.parse(localStorage.getItem("products")!));
   }
 
   return (
@@ -47,23 +39,23 @@ export default function Products(props: any) {
 
 export async function getStaticProps() {
   let data = null;
-  if (typeof window !== "undefined") {
-    if (localStorage.getItem("products") !== null) {
-      axios.get("https://fakestoreapi.com/products").then(async (res) => {
-        localStorage.setItem("products", JSON.stringify(res.data));
-        console.log("products: " + products);
-        products = JSON.parse(localStorage.getItem("products") || "[]");
-        //  data = products;
-      });
-      console.log("products: " + localStorage.getItem("products"));
-    } else {
-      products = JSON.parse(localStorage.getItem("products") || "[]");
-      console.log("products: " + products);
-    }
-  } else {
-    data = await axios.get("https://fakestoreapi.com/products");
-    products = data.data;
-  }
+  // if (typeof window !== "undefined") {
+  //   if (localStorage.getItem("products") !== null) {
+  //     axios.get("https://fakestoreapi.com/products").then(async (res) => {
+  //       localStorage.setItem("products", JSON.stringify(res.data));
+  //       console.log("products array: " + products);
+  //       //  data = products;
+  //     });
+  //     console.log("1 products: " + localStorage.getItem("products"));
+  //   } else {
+  //     products = JSON.parse(localStorage.getItem("products") || "[]");
+  //     console.log("2 products: " + products);
+  //   }
+  // } else {
+
+  // }
+  data = await axios.get("https://fakestoreapi.com/products");
+  products = data.data;
 
   return {
     props: {
