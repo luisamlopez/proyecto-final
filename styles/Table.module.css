@@ -1,41 +1,35 @@
-.table {
+.post {
   width: 100%;
-  border-collapse: collapse;
-  border-spacing: 0;
+  display: flex;
+  justify-content: space-evenly;
   border: 1px solid var(--very-dark-cyan);
-  margin: 0 auto;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  font-size: 14px;
+  padding: 8px;
+  text-align: justify;
 }
 
-.table th,
-.table td {
-  text-align: left;
-  padding: 10px;
-}
-
-.table th {
-  background-color: var(--very-dark-cyan);
-  color: var(--white);
-  font-weight: 700;
-  text-transform: uppercase;
+.id {
+  width: 10%;
   text-align: center;
+  margin-left: 10px;
 }
 
-.table tbody {
-  background-color: var(--cream);
-  color: var(--very-dark-cyan);
+.title {
+  width: 25%;
+  text-align: justify;
+  padding-inline: 8px;
 }
 
-.table tbody tr:nth-child(even) {
-  background-color: var(--dark-grayish-blue);
-  color: var(--cream);
+.body {
+  width: 45%;
+  text-align: justify;
+  padding-inline: 8px;
 }
 
-.idItem {
-  text-align: center;
-  font-weight: 700;
+.actions {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .btnEdit {
@@ -63,4 +57,57 @@
 .btnDelete:hover {
   background-color: red;
   color: var(--white);
+}
+
+.formEditing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 5px;
+  margin: 1rem;
+  background-color: var(--white);
+  border: 1px solid var(--dark-grayish-blue);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 5px;
+  margin: 1rem;
+  background-color: var(--white);
+  border: 1px solid var(--dark-grayish-blue);
+  display: none;
+}
+
+.formShow {
+  display: flex;
+}
+
+.buttonHide {
+  display: none;
+}
+
+.formEditing input,
+.formEditing textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--dark-grayish-blue);
+  border-radius: 5px;
+}
+
+.formEditing input:focus,
+.formEditing textarea:focus {
+  outline: none;
+  border: 1px solid var(--dark-cyan);
+}
+
+.formEditing textarea {
+  height: 100px;
 }

@@ -142,7 +142,17 @@ export default function App() {
       </form>
 
       {/* Table of posts */}
-      {posts.length > 0 ? <Table data={posts} /> : <h1>Cargando...</h1>}
+      <div className="table">
+        <div className="tableHeader">
+          <div className="tableCell">ID</div>
+          <div className="tableCell">Titulo</div>
+          <div className="tableCell">Contenido</div>
+          <div className="tableCell">Acciones</div>
+        </div>
+      </div>
+      {posts.map((post, i) => (
+        <Table key={post.id} data={post} />
+      ))}
     </Layout>
   );
 }

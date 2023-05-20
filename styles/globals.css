@@ -125,3 +125,31 @@ a:hover {
   background-color: var(--white);
   border: 1px solid var(--dark-grayish-blue);
 }
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid var(--very-dark-cyan);
+  margin: 0 auto;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.tableHeader {
+  background-color: var(--dark-cyan);
+  color: var(--white);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.tableCell {
+  padding: 5px;
+}
+
+.post {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
