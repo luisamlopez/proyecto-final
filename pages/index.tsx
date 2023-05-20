@@ -55,6 +55,12 @@ export default function App() {
       //posts.push({title: title, body: body});
       setPosts((posts) => [...posts, data]);
       alert("Post creado");
+
+      //Cerramos el formulario
+      const form = document.getElementById("form")!;
+      const btnCreate = document.getElementById("btnCreate")!;
+      form.classList.toggle("formShow");
+      btnCreate.classList.toggle("buttonHide");
     } catch (error) {
       alert(error);
     }
@@ -86,6 +92,27 @@ export default function App() {
       setPosts(updatePost);
       //setPosts((posts) => [...posts, data]);
       alert("Post editado");
+    } catch (error) {
+      alert(error);
+    }
+  }
+
+  //Funcion para eliminar un post de la API
+  async function deletePost(id: number) {
+    try {
+      const response = await axios.delete(
+        `https://jsonplaceholder.typicode.com/posts/${id}`
+      );
+
+      if (response.status !== 200) {
+        return alert("Error al eliminar el post");
+      }
+
+      const data = response.data;
+      const updatePost = posts.filter((post) => post.id !== id);
+      setPosts(updatePost);
+      //setPosts((posts) => [...posts, data]);
+      alert("Post eliminado");
     } catch (error) {
       alert(error);
     }
@@ -151,7 +178,12 @@ export default function App() {
         </div>
       </div>
       {posts.map((post, i) => (
-        <Table key={post.id} data={post} />
+        <Table
+          key={post.id}
+          data={post}
+          onEdit={editPost}
+          onDelete={deletePost}
+        />
       ))}
     </Layout>
   );

@@ -5,15 +5,33 @@ import styles from "../styles/Table.module.css";
 export interface TableProps {
   data: Post;
   isEditing?: boolean;
-  onEdit?: (id: number, title: string, body: string) => void;
+  onEdit: (id: number, title: string, body: string) => void;
+  onDelete: (id: number) => void;
 }
 
-export default function Table({ data, isEditing }: TableProps) {
+export default function Table({
+  data,
+  isEditing,
+  onEdit,
+  onDelete,
+}: TableProps) {
   const [isEdit, setIsEdit] = useState(false);
 
+  const handleEdit = () => {
+    setIsEdit(!isEdit);
+  };
+
+  const handleDelete = () => {
+    onDelete(data.id!);
+  };
+
   const handleOnEditSubmit = (evt: any) => {
+    //Obtenemos los valores del formulario
+    const title = document.getElementById("title") as HTMLInputElement;
+    const body = document.getElementById("body") as HTMLInputElement;
+
     evt.preventDefault();
-    //onEdit(id, evt.target.name.value, evt.target.email.value);
+    onEdit(data.id!, title.value, body.value);
     setIsEdit(!isEdit);
   };
 
@@ -36,10 +54,12 @@ export default function Table({ data, isEditing }: TableProps) {
           <span className={styles.title}>{data.title}</span>
           <span className={styles.body}>{data.body}</span>
           <div className={styles.actions}>
-            <button className={styles.btnEdit} onClick={handleOnEditSubmit}>
+            <button className={styles.btnEdit} onClick={handleEdit}>
               Editar
             </button>
-            <button className={styles.btnDelete}>Eliminar</button>
+            <button className={styles.btnDelete} onClick={handleDelete}>
+              Eliminar
+            </button>
           </div>
         </div>
       )}
